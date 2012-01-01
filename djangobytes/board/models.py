@@ -38,10 +38,22 @@ from django.utils.translation import ugettext_lazy as _
 # DjangoBytes imports
 from djangobytes import settings
 
+class File(models.Model):
+    file = models.FileField(_('File'), upload_to='filehosting')
+    filename = models.CharField(_('Filename'), max_length=144)
+    user = models.ForeignKey(User)
+
+    class Meta:
+        verbose_name = _('File')
+        verbose_name_plural = _('Files')
+
+    def __unicode__(self):
+        return self.filename
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, unique=True, verbose_name=_('User'))
     passkey = models.CharField(_('Passkey'), max_length=100, blank=True)
-    avatar = models.ImageField(_('Avatar'), upload_to='board/avatars')
+    avatar = models.ForeignKey(File, blank=True)
 
     class Meta:
         verbose_name = _('User Profile')
