@@ -1,0 +1,14 @@
+# python generator 
+# usage: passkey_generator()
+# or :   laenge = 5
+#        zeichen = 'jdeongdl9340pfsa'
+#        passkey_generator(size=laenge, chars=zeichen)
+
+import string
+import random
+
+def passkey_generator(size=40, chars=string.ascii_lowercase +
+string.digits):
+    return ''.join(random.choice(chars) for x in range(size))
+
+
