@@ -74,3 +74,8 @@ class UserProfile(models.Model):
 
     def __unicode__(self):
         return self.user
+
+class Invite(models.Model):
+    user = models.ForeignKey(User, verbose_name=_('User'))
+    is_active = models.BooleanField(verbose_name=_('Active'))
+
