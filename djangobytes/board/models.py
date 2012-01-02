@@ -41,7 +41,7 @@ from djangobytes import settings
 class File(models.Model):
     file = models.FileField(_('File'), upload_to='filehosting')
     filename = models.CharField(_('Filename'), max_length=144)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, verbose_name=_('User'))
 
     class Meta:
         verbose_name = _('File')
@@ -50,10 +50,23 @@ class File(models.Model):
     def __unicode__(self):
         return self.filename
 
+class UserClass(models.Model):
+    classname = models.CharField(_('Classname'), max_length=20)
+    stars = models.IntegerField(_('Stars'))
+
+    class Meta:
+        verbose_name = _('User Class')
+        verbose_name_plural = _('User Classes')
+
+    def __unicode__(self):
+        return self.classname
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, unique=True, verbose_name=_('User'))
     passkey = models.CharField(_('Passkey'), max_length=100, blank=True)
-    avatar = models.ForeignKey(File, blank=True)
+    avatar = models.ForeignKey(File, verbose_name=_('Avatar'), blank=True)
+    userclass = models.ForeignKey(UserClass, verbose_name=_('Userclass'), blank=True)
+    ip = models.IPAddressField(verbose_name=_('IP-Address'), blank=False, null=False)
 
     class Meta:
         verbose_name = _('User Profile')
@@ -61,4 +74,3 @@ class UserProfile(models.Model):
 
     def __unicode__(self):
         return self.user
-

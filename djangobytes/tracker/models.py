@@ -32,6 +32,7 @@ import os
 
 # Django imports
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 # DjangoBytes imports
@@ -40,8 +41,7 @@ from djangobytes import settings
 class Torrent(models.Model):
     torrent = models.FileField(_('Torrent'), upload_to='tracker/torrents')
     desc = models.CharField(_('Description'), max_length=144, blank=False)
-    # user, which uploaded the torrent 
-    user = models.OneToOneField(User, unique=True, verbose_name=_('User'))
+    user = models.ForeignKey(User, verbose_name=_('User'))
 
     class Meta:
         verbose_name = _('Torrent')
