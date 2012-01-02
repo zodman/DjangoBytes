@@ -33,9 +33,10 @@ from django.conf.urls.defaults import *
 
 # Main views
 urlpatterns = patterns('djangobytes.board.views',
+    url(r'^logout/$', 'log_me_out', name='logout'),
 )
 
-# built in views
+# Built in views
 urlpatterns += patterns('django.contrib.auth.views',
-    url(r'^board/login/$', 'login', {'template_name': 'board/login.html'}, name='login'),
+    url(r'^login/$', 'login', {'template_name': 'board/login.html'}, name='login'),
 )

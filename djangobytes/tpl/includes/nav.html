@@ -1,0 +1,21 @@
+{% load i18n %}
+<div id="head">
+    <nav>
+        <ul>
+            <li><a href="/" class="main">DjangoBytes</a></li>
+            {% if board %}
+                <li><a href="#" >{% blocktrans %}Torrents{% endblocktrans %}</a></li>
+                <li><a href="#" >{% blocktrans %}Forums{% endblocktrans %}</a></li>
+                <li><a href="#" >{% blocktrans %}Members{% endblocktrans %}</a></li>
+                <li><a href="#" >{% blocktrans %}Wiki{% endblocktrans %}</a></li>
+            {% endif %}
+        </ul>
+        <ul id="login">
+           {% if user.is_authenticated %}
+              <li><a href="{% url board:logout %}">{% blocktrans %}Logout{% endblocktrans %}</a></li>
+           {% else %}
+              <li><a href="{% url board:login %}">{% blocktrans %}Login{% endblocktrans %}</a></li>
+           {% endif %}
+        </ul>
+    </nav>
+</div>

@@ -63,28 +63,67 @@ td { vertical-align: top; }
 
 
 /* ==|== primary styles ===================================================== */
-header { 
-    background-color:#1D1D1D;
-    color: #FEFEFE;
-    padding-top: 10px;
-    height: 30px;
-}
-    #header_inner {
-        width: 960px;
-        margin: auto;
-    }
 
-        img.logo {
-            vertical-align:middle;
+html, body {
+    height: 100%;
+    overflow-y: hidden;
+}
+
+/**
+ * Navigation
+ */
+
+#head {
+    width: 100%;
+    height: 35px;
+    background-color:#1D1D1D;
+    border-bottom: 2px solid #9ED54C;
+}
+
+nav {
+    width: 960px;
+    height: 35px;
+    margin: auto;
+}
+
+    nav ul#login {
+        float: right;
+    }
+    
+        nav ul li a {
+            color: #BEBEBE;
+            text-decoration: none;
+            line-height: 35px;
+            font-size: 12pt;
             float: left;
+            padding: 0 10px;
         }
 
-        #header_nav {
-            text-align: right;
+        nav ul li a:visited {
+            color: #BEBEBE;
+        }
+        nav ul li a:hover {
+            color: #FEFEFE;
+        }
+        
+        nav ul li a.main {
+            color: #FEFEFE;
+            font-size: 14pt;
+            padding: 0 20px;
+            margin-left: -20px;
+        }
+        
+        nav ul li a.main:hover {
+            background-color: transparent;
+        }   
+
+        nav ul li a.active {
+            color: #FEFEFE;
         }
 
 #main {
     width:960px;
+    padding-top:10px;
     margin:auto;
 }
 

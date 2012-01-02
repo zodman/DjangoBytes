@@ -3,5 +3,8 @@
 {% block page_title %}Home{% endblock %}
 
 {% block content %}
-    <p>{% trans "Hurrah! ^.^" %}</p>
+    {% include "includes/nav.html" with board=1 %}
+    <div id="main">
+        {% trans "Hurrah! ^.^" %}
+    </div>
 {% endblock %}
