@@ -64,17 +64,28 @@ td { vertical-align: top; }
 
 /* ==|== primary styles ===================================================== */
 header { 
-    background-color:#F6F8EE;
-    padding:10px; 
+    background-color:#1D1D1D;
+    color: #FEFEFE;
+    padding-top: 10px;
+    height: 30px;
 }
+    #header_inner {
+        width: 960px;
+        margin: auto;
+    }
 
-#logo { 
-    margin-right:10px;
-}
+        img.logo {
+            vertical-align:middle;
+            float: left;
+        }
+
+        #header_nav {
+            text-align: right;
+        }
 
 #main {
-    padding-left: 10px; 
-    padding-right: 10px;
+    width:960px;
+    margin:auto;
 }
 
 /* ==|== non-semantic helper classes ======================================== */
