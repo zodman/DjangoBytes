@@ -40,6 +40,7 @@ from djangobytes import settings
 class Torrent(models.Model):
     torrent = models.FileField(_('Torrent'), upload_to='tracker/torrents')
     desc = models.CharField(_('Description'), max_length=144, blank=False)
+    user = models.OneToOneField(User, unique=True, verbose_name=_('User'))
 
     class Meta:
         verbose_name = _('Torrent')
