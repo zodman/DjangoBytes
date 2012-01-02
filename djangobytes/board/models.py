@@ -79,3 +79,10 @@ class Invite(models.Model):
     user = models.ForeignKey(User, verbose_name=_('User'))
     is_active = models.BooleanField(verbose_name=_('Active'))
 
+    class Meta:
+        verbose_name = _('Invite')
+        verbose_name_plural = _('Invites')
+
+    def __unicode__(self):
+        return "{0} - {1}".format(user, is_active)
+
