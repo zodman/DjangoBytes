@@ -27,7 +27,15 @@ SOFTWARE.
 
 """
 
-from django.conf.urls.defaults import patterns, include, url
+# Django imports
+from django.conf import settings 
+from django.conf.urls.defaults import *
 
+# Main views
 urlpatterns = patterns('djangobytes.board.views',
+)
+
+# built in views
+urlpatterns += patterns('django.contrib.auth.views',
+    url(r'^board/login/$', 'login', {'template_name': 'board/login.html'}, name='login'),
 )
