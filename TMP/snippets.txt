@@ -4,8 +4,7 @@
 #        zeichen = 'jdeongdl9340pfsa'
 #        passkey_generator(size=laenge, chars=zeichen)
 
-import string
-import random
+import string, random
 
 def passkey_generator(size=40, chars=string.ascii_lowercase +
 string.digits):
