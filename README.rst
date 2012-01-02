@@ -9,8 +9,8 @@ DjangoBytes is a new and improved BitTorrent tracker based on Django.
 License (MIT)
 =============
 
-Copyright (C) 2011 Dominic Miglar, war10ck@iirc.cc
-Copyright (C) 2011 Angelo Gründler, me@kanadezwo.ch
+| Copyright (C) 2011 Dominic Miglar, war10ck@iirc.cc
+| Copyright (C) 2011 Angelo Gründler, me@kanadezwo.ch
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
