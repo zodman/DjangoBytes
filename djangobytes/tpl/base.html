@@ -8,8 +8,8 @@
     <meta name="author" content="{% block meta_author %}{% endblock %}" />
     
     {# TODO: <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico" /> #}
-    {% if user.is_authenticated %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/normalize.css" />
+    {% if user.is_authenticated %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/style.css" />
     {% block css %}{% endblock %}
     {% else %}
