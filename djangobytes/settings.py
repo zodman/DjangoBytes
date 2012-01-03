@@ -197,4 +197,5 @@ LOGIN_REQUIRED_URLS_EXCEPTIONS = (
     r'/board/login(.*)$', 
     r'/board/logout(.*)$',
     r'/static/djangobytes/css/login.css(.*)$',
+    r'/static/djangobytes/css/normalize.css(.*)$',
 )
