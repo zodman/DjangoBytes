@@ -40,12 +40,11 @@ from djangobytes import settings
 
 class Torrent(models.Model):
     torrent = models.FileField(_('Torrent'), upload_to='tracker/torrents')
-    desc = models.CharField(_('Description'), max_length=144, blank=False)
-    user = models.ForeignKey(User, verbose_name=_('User'))
+    infohash = models.CharField(_('Infohash'), max_length=20)
 
     class Meta:
         verbose_name = _('Torrent')
         verbose_name_plural = _('Torrents')
 
     def __unicode__(self):
-        return self.desc
+        return self.infohash
