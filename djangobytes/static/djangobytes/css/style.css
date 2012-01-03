@@ -128,10 +128,18 @@ nav {
     margin: auto;
 }
 
-#loginform {
-    background-color: #343434;
+#loginform_outer {
     width: 100%;
     height: 100%;
+    background-color: #1C1C1C;
+}
+
+#loginform {
+    width: 100%;
+    height: 88%;
+    position: relative;
+    top: 6%;
+    background-color: #343434;
 }
 
     #loginform_inner {
