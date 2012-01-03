@@ -62,11 +62,10 @@ class UserClass(models.Model):
         return self.classname
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, unique=True, verbose_name=_('User'))
-    passkey = models.CharField(_('Passkey'), max_length=100, blank=True)
+    user = models.ForeignKey(User, unique=True, verbose_name=_('User'))
+    passkey = models.CharField(_('Passkey'), max_length=32, blank=True)
     avatar = models.ForeignKey(File, verbose_name=_('Avatar'), blank=True)
     userclass = models.ForeignKey(UserClass, verbose_name=_('Userclass'), blank=True)
-    ip = models.IPAddressField(verbose_name=_('IP-Address'), blank=False, null=False)
 
     class Meta:
         verbose_name = _('User Profile')

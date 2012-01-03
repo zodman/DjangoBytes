@@ -33,11 +33,14 @@ from django.conf.urls.defaults import *
 
 # Main views
 urlpatterns = patterns('djangobytes.board.views.board',
-    url(r'^admin/$', 'admin', name='admin'),
     url(r'^logout/$', 'log_me_out', name='logout'),
 )
 
-# Built in views
+urlpatterns += patterns('djangobytes.board.views.admin',
+    url(r'^admin/$', 'admin', name='admin'),
+)
+
+#Built in views
 urlpatterns += patterns('django.contrib.auth.views',
     url(r'^login/$', 'login', {'template_name': 'board/login.html'}, name='login'),
 )
