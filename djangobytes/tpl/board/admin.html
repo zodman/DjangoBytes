@@ -1,10 +1,33 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block page_title %}Home{% endblock %}
+{% block page_title %}{% blocktrans %}Administration{% endblocktrans%}{% endblock %}
 
 {% block content %}
     {% include "includes/nav.html" with board=1 %}
     <div id="main">
-        {% trans "Admin Page" %}
+        <div class="info">
+        <b>{% blocktrans %}Administration{% endblocktrans %}</b>
+        <p>{% blocktrans %}The system can be managed through this interface.
+        Be sure of what you change. The stability of the system can be significantly affected.
+        Read the documentation before you play around.{% endblocktrans %}</p>
+        </div>
+        <div class="success">
+        <b>{% blocktrans %}Administration{% endblocktrans %}</b>
+        <p>{% blocktrans %}The system can be managed through this interface.
+        Be sure of what you change. The stability of the system can be significantly affected.
+        Read the documentation before you play around.{% endblocktrans %}</p>
+        </div>
+        <div class="warning">
+        <b>{% blocktrans %}Administration{% endblocktrans %}</b>
+        <p>{% blocktrans %}The system can be managed through this interface.
+        Be sure of what you change. The stability of the system can be significantly affected.
+        Read the documentation before you play around.{% endblocktrans %}</p>
+        </div>
+        <div class="error">
+        <b>{% blocktrans %}Administration{% endblocktrans %}</b>
+        <p>{% blocktrans %}The system can be managed through this interface.
+        Be sure of what you change. The stability of the system can be significantly affected.
+        Read the documentation before you play around.{% endblocktrans %}</p>
+        </div>
     </div>
 {% endblock %}
