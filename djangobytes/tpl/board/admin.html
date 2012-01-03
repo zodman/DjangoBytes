@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block page_title %}Home{% endblock %}
+
+{% block content %}
+    {% include "includes/nav.html" with board=1 %}
+    {% if user.is_staff %}
+    <div id="main">
+        {% trans "Admin Page" %}
+    </div>
+    {% else %}
+        {% trans "Access denied." %}
+    {% endif %}
+{% endblock %}

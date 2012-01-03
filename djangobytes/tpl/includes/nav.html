@@ -10,7 +10,7 @@
                 <li><a href="#" >{% blocktrans %}Members{% endblocktrans %}</a></li>
                 <li><a href="#" >{% blocktrans %}Wiki{% endblocktrans %}</a></li>
                 {% if user.is_staff %}
-                <li><a href="#" >{% blocktrans %}Admin{% endblocktrans %}</a></li>
+                <li><a href="{% url board:admin %}" >{% blocktrans %}Admin{% endblocktrans %}</a></li>
                 {% endif %}
             {% endif %}
         </ul>

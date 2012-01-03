@@ -30,8 +30,11 @@ SOFTWARE.
 # Django imports
 from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth import logout
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, render_to_response, RequestContext
 from django.core.urlresolvers import reverse
+
+def admin(request):
+    return render_to_response('board/admin.html', context_instance=RequestContext(request))
 
 def log_me_out(request):
     """Simple logout view

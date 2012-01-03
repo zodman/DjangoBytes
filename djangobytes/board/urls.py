@@ -33,6 +33,7 @@ from django.conf.urls.defaults import *
 
 # Main views
 urlpatterns = patterns('djangobytes.board.views',
+    url(r'^admin/$', 'admin', name='admin'),
     url(r'^logout/$', 'log_me_out', name='logout'),
 )
 
