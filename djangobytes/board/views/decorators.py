@@ -28,16 +28,20 @@ SOFTWARE.
 """
 
 # Django imports
-from django.conf import settings
-from django.conf.urls.defaults import *
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth import REDIRECT_FIELD_NAME
+from djangobytes.settings import INS_PERMISSIONS_URL
 
-# Main views
-urlpatterns = patterns('djangobytes.board.views.board',
-    url(r'^admin/$', 'admin', name='admin'),
-    url(r'^logout/$', 'log_me_out', name='logout'),
-)
-
-# Built in views
-urlpatterns += patterns('django.contrib.auth.views',
-    url(r'^login/$', 'login', {'template_name': 'board/login.html'}, name='login'),
-)
+def staff_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, ins_permissions_url=INS_PERMISSIONS_URL):
+    """
+    Decorator for views that checks that the user is staff, redirecting
+    to the ins_permissions page if necessary.
+    """
+    actual_decorator = user_passes_test(
+        lambda u: u.is_staff,
+        login_url=ins_permissions_url,
+        redirect_field_name=redirect_field_name
+    )
+    if function:
+        return actual_decorator(function)
+    return actual_decorator

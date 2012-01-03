@@ -109,8 +109,6 @@ MEDIA_URL = '/static/upload/'
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 ADMIN_MEDIA_PREFIX = STATIC_URL + "admin/"
 
-LOGIN_URL = '/board/login/'
-
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
@@ -136,6 +134,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'djangobytes.board.middleware.RequireLoginMiddleware',
+    'djangobytes.board.middleware.RequireStaffMiddleware',
 )
 
 TEMPLATE_DIRS = (
@@ -188,7 +187,7 @@ LOGGING = {
     }
 }
 
-# RequireLoginMiddleware Settings
+# Board Settings
 LOGIN_REQUIRED_URLS = (
     r'/(.*)$',
 )
@@ -199,3 +198,15 @@ LOGIN_REQUIRED_URLS_EXCEPTIONS = (
     r'/static/djangobytes/css/login.css(.*)$',
     r'/static/djangobytes/css/normalize.css(.*)$',
 )
+
+LOGIN_URL = '/board/login/'
+
+STAFF_REQUIRED_URLS = {
+    r'/board/admin(.*)$',
+}
+
+STAFF_REQUIRED_URLS_EXCEPTIONS = (
+    r'/board/admin/ins-permissions(.*)$',
+)
+
+INS_PERMISSIONS_URL = '/'
