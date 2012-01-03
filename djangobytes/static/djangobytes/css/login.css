@@ -32,26 +32,34 @@ html, body {
     #loginform_inner #submit {
         border: none;
         width: 100%;
-        color: #FEFEFE;
+        color: #BEBEBE;
         background-color: #242424;
-        font-size: 12px;
+        font-size: 16px;
+        visibility: hidden;
     }
 
     #loginform_inner #id_username {
         border: none;
         color: #BEBEBE;
         display: block;
-        width: 100%;
+        float: right;
+        width: 90%;
         background-color: #242424;
     }
 
     #loginform_inner #id_username:focus {
-        background-color: #242424;
+        background-color: #342424;
     }
 
     #loginform_inner #id_password {
         border: none;
         color: #BEBEBE;
         display: block;
-        width: 100%;
+        float: right;
+        width: 90%;
         background-color: #242424;
+    }
+
+    #loginform_inner #id_password:focus {
+        background-color: #342424;
+    }

@@ -33,6 +33,9 @@ from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404, render, render_to_response, RequestContext
 from django.core.urlresolvers import reverse
 
+#DjangoBytes imports
+from djangobytes.settings import PASSKEY_LENGTH
+
 def admin(request):
     return render_to_response('board/admin.html', context_instance=RequestContext(request))
 
@@ -47,6 +50,7 @@ def admin_new_user(request):
             user = user_form.save()
             profile = profile_form.save(commit=False)
             profile.user = user
+            profile.passkey = 'testkey'
             profile.save()
             return HttpResponseRedirect(reverse('board:admin'))
         ctx = {

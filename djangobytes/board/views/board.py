@@ -37,4 +37,4 @@ def log_me_out(request):
     """Simple logout view
     """
     logout(request)
-    return HttpResponseRedirect(reverse('board:index'))
+    return HttpResponseRedirect(reverse('board:login'))
