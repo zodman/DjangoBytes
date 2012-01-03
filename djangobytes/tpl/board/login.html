@@ -13,7 +13,7 @@
         <div id='loginform'>
             <div id="loginform_inner">
                 <form method="post" action="{% url board:login %}">
-                    <input type="hidden" name="next" value="/" />
+                    <input type="hidden" name="next" value="{{ next }}" />
                     {% csrf_token %}
                     <table width=100%>
                         <tr>
