@@ -77,7 +77,7 @@ class UserProfile(models.Model):
 
 class Invite(models.Model):
     user = models.ForeignKey(User, verbose_name=_('User'))
-    is_active = models.BooleanField(verbose_name=_('Active'))
+    is_used = models.BooleanField(verbose_name=_('Used'))
 
     class Meta:
         verbose_name = _('Invite')
