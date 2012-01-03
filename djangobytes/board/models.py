@@ -78,6 +78,7 @@ class UserProfile(models.Model):
 class Invite(models.Model):
     user = models.ForeignKey(User, verbose_name=_('User'))
     is_used = models.BooleanField(verbose_name=_('Used'))
+    email = models.EmailField(max_length=100, verbose_name=_('E-Mail'))
 
     class Meta:
         verbose_name = _('Invite')
