@@ -67,6 +67,7 @@ td { vertical-align: top; }
 html, body {
     height: 100%;
     overflow-y: hidden;
+    font-family: Helvetica;
 }
 
 /**
@@ -122,10 +123,57 @@ nav {
         }
 
 #main {
-    width:960px;
-    padding-top:10px;
-    margin:auto;
+    width: 960px;
+    padding-top: 10px;
+    margin: auto;
 }
+
+#loginform {
+    background-color: #343434;
+    width: 100%;
+    height: 100%;
+}
+
+    #loginform_inner {
+        color: #BEBEBE;
+        width: 300px;
+        height: 300px;
+        margin: auto;
+        position: relative;
+        top: 40%;
+    }
+
+    #loginform_inner #submit {
+        border: none;
+        width: 100%;
+        color: #FEFEFE;
+        background-color: #242424;
+        font-size: 12px;
+    }
+
+    #loginform_inner #id_username {
+        border: none;
+        color: #BEBEBE;
+        display: block;
+        width: 100%;
+        background-color: #242424;
+    }
+
+    #loginform_inner #id_username:focus {
+        background-color: #242424;
+    }
+
+    #loginform_inner #id_password {
+        border: none;
+        color: #BEBEBE;
+        display: block;
+        width: 100%;
+        background-color: #242424;
+    }
+
+    #loginform_inner #id_password:focus {
+        background-color: #242424;
+    }
 
 /* ==|== non-semantic helper classes ======================================== */
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }

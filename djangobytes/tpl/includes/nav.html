@@ -1,4 +1,5 @@
 {% load i18n %}
+{% if user.is_authenticated %}
 <div id="head">
     <nav>
         <ul>
@@ -11,11 +12,8 @@
             {% endif %}
         </ul>
         <ul id="login">
-           {% if user.is_authenticated %}
               <li><a href="{% url board:logout %}">{% blocktrans %}Logout{% endblocktrans %}</a></li>
-           {% else %}
-              <li><a href="{% url board:login %}">{% blocktrans %}Login{% endblocktrans %}</a></li>
-           {% endif %}
         </ul>
     </nav>
 </div>
+{% endif %}
