@@ -6,7 +6,7 @@
     {% include "includes/nav.html" with board=1 %}
     {% if user.is_authenticated %}
     <div id="main">
-        {% trans "Hurrah! ^.^" %}
+        {% trans "You are already logged in." %}
     </div>
     {% else %}
     <div id="loginform_outer">

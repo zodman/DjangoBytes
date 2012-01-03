@@ -4,31 +4,7 @@
 
 {% block content %}
     {% include "includes/nav.html" with board=1 %}
-    {% if user.is_authenticated %}
     <div id="main">
         {% trans "Hurrah! ^.^" %}
     </div>
-    {% else %}
-    <div id="loginform_outer">
-        <div id='loginform'>
-            <div id="loginform_inner">
-                <form method="post" action="{% url board:login %}">
-                    <input type="hidden" name="next" value="/" />
-                    {% csrf_token %}
-                    <table width=100%>
-                        <tr>
-                            <td><label for="id_username">{% blocktrans %}Username{% endblocktrans %}</label></td>
-                            <td><input type="text" name="username" id="id_username" maxlength="30" /></td>
-                        </tr>
-                        <tr>
-                            <td><label for="id_password">{% blocktrans %}Password{% endblocktrans %}</label></td>
-                            <td><input type="password" name="password" id="id_password" /></td>
-                        </tr>
-                    </table>
-                    <p><input id="submit" type="submit" value="{% blocktrans %}Login{% endblocktrans %}" /></p>
-                </form>
-            </div>
-        </div>
-    </div>
-    {% endif %}
 {% endblock %}

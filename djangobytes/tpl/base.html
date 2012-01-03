@@ -8,9 +8,12 @@
     <meta name="author" content="{% block meta_author %}{% endblock %}" />
     
     {# TODO: <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico" /> #}
+    {% if user.is_authenticated %}
     <link rel="stylesheet" href="{{ STATIC_URL }}djangobytes/css/style.css" />
     {% block css %}{% endblock %}
-    
+    {% else %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}djangobytes/css/login.css" />
+    {% endif %}
     <script src="{{ STATIC_URL }}djangobytes/js/libs/modernizr-2.0.6.min.js"></script>
 </head>
 

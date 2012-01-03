@@ -70,63 +70,56 @@ html, body {
     font-family: Helvetica;
 }
 
-/**
- * Navigation
- */
-
-#head {
+#loginform_outer {
     width: 100%;
-    height: 35px;
-    background-color:#1D1D1D;
-    border-bottom: 2px solid #9ED54C;
+    height: 100%;
+    background-color: #1C1C1C;
 }
 
-nav {
-    width: 960px;
-    height: 35px;
-    margin: auto;
+#loginform {
+    width: 100%;
+    height: 88%;
+    position: relative;
+    top: 6%;
+    background-color: #343434;
 }
 
-    nav ul#login {
-        float: right;
+    #loginform_inner {
+        color: #BEBEBE;
+        width: 300px;
+        height: 300px;
+        margin: auto;
+        position: relative;
+        top: 40%;
     }
-    
-        nav ul li a {
-            color: #BEBEBE;
-            text-decoration: none;
-            line-height: 35px;
-            font-size: 12pt;
-            float: left;
-            padding: 0 10px;
-        }
 
-        nav ul li a:visited {
-            color: #BEBEBE;
-        }
-        nav ul li a:hover {
-            color: #FEFEFE;
-        }
-        
-        nav ul li a.main {
-            color: #FEFEFE;
-            font-size: 14pt;
-            padding: 0 20px;
-            margin-left: -20px;
-        }
-        
-        nav ul li a.main:hover {
-            background-color: transparent;
-        }   
+    #loginform_inner #submit {
+        border: none;
+        width: 100%;
+        color: #FEFEFE;
+        background-color: #242424;
+        font-size: 12px;
+    }
 
-        nav ul li a.active {
-            color: #FEFEFE;
-        }
+    #loginform_inner #id_username {
+        border: none;
+        color: #BEBEBE;
+        display: block;
+        width: 100%;
+        background-color: #242424;
+    }
 
-#main {
-    width: 960px;
-    padding-top: 10px;
-    margin: auto;
-}
+    #loginform_inner #id_username:focus {
+        background-color: #242424;
+    }
+
+    #loginform_inner #id_password {
+        border: none;
+        color: #BEBEBE;
+        display: block;
+        width: 100%;
+        background-color: #242424;
+    }
 
 /* ==|== non-semantic helper classes ======================================== */
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
