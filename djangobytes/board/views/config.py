@@ -32,16 +32,16 @@ from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404, render, render_to_response, RequestContext
 from django.core.urlresolvers import reverse
+from django.conf import settings
 
 #DjangoBytes imports
-from djangobytes.settings import PASSKEY_LENGTH
 from djangobytes.board.forms import *
 from djangobytes.board.shortcuts import *
 
-def admin(request):
-    return render_to_response('board/admin.html', context_instance=RequestContext(request))
+def config_settings(request):
+    return render_to_response('board/config/settings.html', context_instance=RequestContext(request))
 
-def admin_new_user(request):
+def config_settings_new_user(request):
     """
     The admin view for creating a new user
     """
@@ -54,12 +54,12 @@ def admin_new_user(request):
             profile.user = user
             profile.passkey = 'testkey'
             profile.save()
-            return HttpResponseRedirect(reverse('board:admin'))
+            return HttpResponseRedirect(reverse('board:config_settings'))
         ctx = {
             'user_form': user_form,
             'profile_form': profile_form
         }
-        return csrf_render(request, 'board/admin/new_user.html', ctx, True)
+        return csrf_render(request, 'board/config/settings_new_user.html', ctx, True)
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()   
@@ -67,5 +67,5 @@ def admin_new_user(request):
             'user_form': user_form,
             'profile_form': profile_form
         }
-        return csrf_render(request, 'board/admin/new_user.html', ctx)
+        return csrf_render(request, 'board/config/settings_new_user.html', ctx)
 

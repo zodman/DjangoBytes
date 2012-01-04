@@ -204,11 +204,10 @@ LOGIN_URL = '/board/login/'
 LOGIN_REDIRECT_URL = '/'
 
 STAFF_REQUIRED_URLS = {
-    r'/board/admin(.*)$',
+    r'/board/config(.*)$',
 }
 
 STAFF_REQUIRED_URLS_EXCEPTIONS = (
-    r'/board/admin/ins-permissions(.*)$',
 )
 
 INS_PERMISSIONS_URL = '/'

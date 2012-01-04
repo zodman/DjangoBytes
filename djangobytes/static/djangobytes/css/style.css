@@ -78,34 +78,22 @@ html, body {
  */
 
 .info, .success, .warning, .error, .validation {
-    border: 1px solid;
     margin: 10px 0px;
-    padding: 15px 10px 15px 65px;
-    background-repeat: no-repeat;
-    background-position: 10px center;
+    padding: 15px 15px 15px 15px;
     font-size: 12px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    color: #FEFEFE;
 }
 .info {
-    color: #00529B;
-    background-color: #E1EEF7;
-    background-image: url('/static/djangobytes/img/icons/info.png');
+    background-color: #22529B;
 }
 .success {
-    color: #4F8A10;
-    background-color: #ECF7E1;
-    background-image:url('/static/djangobytes/img/icons/success.png');
+    background-color: #4F8A20;
 }
 .warning {
-    color: #9F6000;
-    background-color: #F7EAE1;
-    background-image: url('/static/djangobytes/img/icons/warning.png');
+    background-color: #9F6222;
 }
 .error {
-    color: #D8000C;
-    background-color: #F7E4E1;
-    background-image: url('/static/djangobytes/img/icons/error.png');
+    background-color: #AC222C;
 }
 
 /*

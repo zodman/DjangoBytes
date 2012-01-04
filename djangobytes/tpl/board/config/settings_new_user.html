@@ -15,7 +15,7 @@
                 <p>{% blocktrans %}Can't create new user. Check the highlighted fields.{% endblocktrans %}</p>
             </div>
             {% endif %}
-            <form method="post" class="section" action="{% url board:admin_new_user %}">
+            <form method="post" class="section" action="{% url board:config_settings_new_user %}">
                 {% csrf_token %}
                 <table>
                     {% for field in user_form %}

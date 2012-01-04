@@ -34,9 +34,7 @@ import os
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
-
-# DjangoBytes imports
-from djangobytes import settings
+from django.conf import settings
 
 class File(models.Model):
     file = models.FileField(_('File'), upload_to='filehosting')

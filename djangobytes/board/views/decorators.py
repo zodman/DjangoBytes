@@ -30,9 +30,9 @@ SOFTWARE.
 # Django imports
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth import REDIRECT_FIELD_NAME
-from djangobytes.settings import INS_PERMISSIONS_URL
+from django.conf import settings
 
-def staff_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, ins_permissions_url=INS_PERMISSIONS_URL):
+def staff_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, ins_permissions_url=settings.INS_PERMISSIONS_URL):
     """
     Decorator for views that checks that the user is staff, redirecting
     to the ins_permissions page if necessary.

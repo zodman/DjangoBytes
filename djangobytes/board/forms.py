@@ -34,9 +34,9 @@ import os
 from django import forms
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 # DjangoBytes imports
-from djangobytes import settings
 from djangobytes.board.models import UserProfile
 
 class UserForm(forms.ModelForm):
