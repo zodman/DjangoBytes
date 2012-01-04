@@ -37,10 +37,11 @@ from django.utils.translation import ugettext_lazy as _
 
 # DjangoBytes imports
 from djangobytes import settings
+from djangobytes.board.models import UserProfile
 
 class Torrent(models.Model):
     torrent = models.FileField(_('Torrent'), upload_to='tracker/torrents')
-    infohash = models.CharField(_('Infohash'), max_length=20)
+    info_hash = models.CharField(_('Infohash'), max_length=20)
 
     class Meta:
         verbose_name = _('Torrent')
@@ -58,7 +59,11 @@ class Peer(models.Model):
     uploaded = models.IntegerField(verbose_name=_('Bytes uploaded'))
     left = models.IntegerField(verbose_name=_('Bytes left'))
     seeder = models.BooleanField(verbose_name=_('is seeder'))
+    is_active = models.BooleanField(verbose_name=_('is active'))
 
     class Meta:
         verbose_name = _('Peer')
         verbose_name_plural = _('Peers')
+
+    def __unicode__(self):
+        return "{0}:{1}".format(ip, port)
