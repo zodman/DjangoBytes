@@ -97,3 +97,14 @@ nav {
     background-color: #F7E4E1;
     background-image: url('/static/djangobytes/img/icons/error.png');
 }
+
+    #settings h1 {
+        margin: 0;
+        padding: 15px 0;
+        font-size: 16pt;
+        text-align: center;
+        width: 100%;
+        font-weight: normal;
+        width: 900px;
+        margin: auto;
+    }

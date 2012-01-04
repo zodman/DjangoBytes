@@ -38,6 +38,7 @@ urlpatterns = patterns('djangobytes.board.views.board',
 
 urlpatterns += patterns('djangobytes.board.views.admin',
     url(r'^admin/$', 'admin', name='admin'),
+    url(r'^admin/new_user/$', 'admin_new_user', name='admin_new_user'),
 )
 
 #Built in views

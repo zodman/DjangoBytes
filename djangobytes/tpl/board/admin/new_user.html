@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% blocktrans %}Administration{% endblocktrans%}{% endblock %}
+
+{% block content %}
+    {% include "includes/nav.html" with board=1 %}
+
+    <div id="main">
+        <div id="settings">
+            <h1>{% trans 'Create a new user' %}</h1>
+            <form method="post" class="section" action="{% url board:admin_new_user %}">
+                {% csrf_token %}
+                <table>
+                    {% for field in user_form %}
+                        <tr>
+                            <th>{{ field.label }}
+                            {% if field.help_text %}
+                                <br /><span class="helptext">{{ field.help_text }}</span></th>
+                            {% endif %}
+                            <td>{{ field }}</td>
+                            <td>{{ field.errors }}</td>
+                        </tr>
+                    {% endfor %}
+                    {% for field in profile_form %}
+                        <tr>
+                            <th>{{ field.label }}
+                            {% if field.help_text %}
+                                <br /><span class="helptext">{{ field.help_text }}</span></th>
+                            {% endif %}
+                            <td>{{ field }}</td>
+                            <td>{{ field.errors }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <p class="submit"><input type="submit" value="{% blocktrans %}create{% endblocktrans %}" /></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

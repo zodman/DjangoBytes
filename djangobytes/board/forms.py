@@ -42,11 +42,12 @@ from djangobytes.board.models import UserProfile
 class UserForm(forms.ModelForm):
     password1 = forms.CharField(label=_('Password'), required=False, widget=forms.PasswordInput)
     password2 = forms.CharField(label=_('Confirm password'), required=False, widget=forms.PasswordInput)
-    is_staff = forms.BooleanField(label=_('Superuser'),
+    is_staff = forms.BooleanField(label=_('Staff'),
         help_text=_('Sets if the user is a staff.'), required=False)
+    
     class Meta:
         model = User
-        exclude = ('first_name', 'last_name', 'is_superuser' 'last_login',
+        exclude = ('first_name', 'last_name', 'is_superuser', 'last_login',
                    'date_joined', 'groups', 'user_permissions', 'password')
 
     def clean_password2(self):

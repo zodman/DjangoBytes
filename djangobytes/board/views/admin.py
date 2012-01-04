@@ -35,6 +35,8 @@ from django.core.urlresolvers import reverse
 
 #DjangoBytes imports
 from djangobytes.settings import PASSKEY_LENGTH
+from djangobytes.board.forms import *
+from djangobytes.board.shortcuts import *
 
 def admin(request):
     return render_to_response('board/admin.html', context_instance=RequestContext(request))
@@ -57,7 +59,7 @@ def admin_new_user(request):
             'user_form': user_form,
             'profile_form': profile_form
         }
-        return csrf_render(request, 'admin/new_user.html', ctx)
+        return csrf_render(request, 'board/admin/new_user.html', ctx)
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()   
@@ -65,5 +67,5 @@ def admin_new_user(request):
             'user_form': user_form,
             'profile_form': profile_form
         }
-        return csrf_render(request, 'admin/new_user.html', ctx)
+        return csrf_render(request, 'board/admin/new_user.html', ctx)
 

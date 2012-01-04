@@ -63,9 +63,9 @@ class UserClass(models.Model):
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True, verbose_name=_('User'))
-    passkey = models.CharField(_('Passkey'), max_length=32, blank=True)
-    avatar = models.ForeignKey(File, verbose_name=_('Avatar'), blank=True)
-    userclass = models.ForeignKey(UserClass, verbose_name=_('Userclass'), blank=True)
+    passkey = models.CharField(_('Passkey'), max_length=32, blank=True, null=True)
+    avatar = models.ForeignKey(File, verbose_name=_('Avatar'), blank=True, null=True)
+    userclass = models.ForeignKey(UserClass, verbose_name=_('Userclass'), blank=True, null=True)
 
     class Meta:
         verbose_name = _('User Profile')

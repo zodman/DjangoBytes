@@ -49,6 +49,11 @@ html, body {
 
     #loginform_inner #id_username:focus {
         background-color: #342424;
+        outline: none;
+    }
+    
+    #loginform_inner #id_username:hover {
+        outline: none;
     }
 
     #loginform_inner #id_password {
@@ -62,4 +67,9 @@ html, body {
 
     #loginform_inner #id_password:focus {
         background-color: #342424;
+        outline: none;
+    }
+    
+    #loginform_inner #id_password:hover {
+        outline: none;
     }
