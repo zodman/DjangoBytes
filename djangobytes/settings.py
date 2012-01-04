@@ -213,3 +213,12 @@ STAFF_REQUIRED_URLS_EXCEPTIONS = (
 INS_PERMISSIONS_URL = '/'
 
 PASSKEY_LENGTH = 32
+# REQUIRE_ANNOUNCE_METHON can be 'standard', 'no_peer_id, or 'compact'
+REQUIRE_ANNOUNCE_METHOD = 'standard'
+# standard num_want, if client doesn't specify it itself
+NUM_WANT = 50
+# announce interval, in seconds
+ANNOUNCE_INTERVAL = 120
+
+
+
