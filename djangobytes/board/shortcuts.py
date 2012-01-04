@@ -15,7 +15,7 @@ from django.utils.encoding import smart_str
 """Keep your usefull tools here
 """
 
-def csrf_render(request, tpl, tplvars={}):
+def csrf_render(request, tpl, tplvars={}, forms_errors=None):
     """Shortcut for renewing csrf cookie and passing request context
     
     Keyword arguments:
@@ -25,5 +25,6 @@ def csrf_render(request, tpl, tplvars={}):
     """
     tplvars.update(csrf(request))
     # pass config vars
+    tplvars['forms_errors'] = forms_errors
     return render_to_response(tpl, tplvars,
                                context_instance=RequestContext(request))

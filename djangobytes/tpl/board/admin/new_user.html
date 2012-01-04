@@ -9,6 +9,12 @@
     <div id="main">
         <div id="form1">
             <h1>{% trans 'Create a new user' %}</h1>
+            {% if forms_errors %}
+            <div class="error">
+                <b>{% blocktrans %}Error{% endblocktrans %}</b>
+                <p>{% blocktrans %}Can't create new user. Check the highlighted fields.{% endblocktrans %}</p>
+            </div>
+            {% endif %}
             <form method="post" class="section" action="{% url board:admin_new_user %}">
                 {% csrf_token %}
                 <table>
@@ -18,8 +24,11 @@
                             {% if field.help_text %}
                                 <br /><span class="helptext">{{ field.help_text }}</span></th>
                             {% endif %}
-                            <td>{{ field }}</td>
-                            <td>{{ field.errors }}</td>
+                            <td>
+                                <div class="field{% if field.errors %} field_error{% endif %}">
+                                  {{ field }}
+                                </div>
+                            </td>
                         </tr>
                     {% endfor %}
                     {% for field in profile_form %}
@@ -28,8 +37,11 @@
                             {% if field.help_text %}
                                 <br /><span class="helptext">{{ field.help_text }}</span></th>
                             {% endif %}
-                            <td>{{ field }}</td>
-                            <td>{{ field.errors }}</td>
+                            <td>
+                                <div class="field{% if field.errors %} field_error{% endif %}">
+                                  {{ field }}
+                                </div>
+                            </td>
                         </tr>
                     {% endfor %}
                 </table>

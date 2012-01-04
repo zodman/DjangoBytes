@@ -59,7 +59,7 @@ def admin_new_user(request):
             'user_form': user_form,
             'profile_form': profile_form
         }
-        return csrf_render(request, 'board/admin/new_user.html', ctx)
+        return csrf_render(request, 'board/admin/new_user.html', ctx, True)
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()   

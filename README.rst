@@ -81,3 +81,8 @@ IRC
 ---
 
 We reside on irc.freenode.net in channel ``#djangobytes``.
+
+Thanks
+======
+
+Thanks to Bernhard Posselt, who has helped us to fix various problems.

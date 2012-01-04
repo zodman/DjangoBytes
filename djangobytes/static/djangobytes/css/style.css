@@ -185,6 +185,10 @@ html, body {
                 #form1 input:hover {
                     outline: none;
                 }
+
+                #form1 .field_error input {
+                    background-color: #FFCCCC; 
+                }
         
             #form1 form p.submit {
                 text-align: center;
