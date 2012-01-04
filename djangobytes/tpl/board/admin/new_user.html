@@ -7,7 +7,7 @@
     {% include "includes/nav.html" with board=1 %}
 
     <div id="main">
-        <div id="settings">
+        <div id="form1">
             <h1>{% trans 'Create a new user' %}</h1>
             <form method="post" class="section" action="{% url board:admin_new_user %}">
                 {% csrf_token %}
@@ -33,7 +33,7 @@
                         </tr>
                     {% endfor %}
                 </table>
-                <p class="submit"><input type="submit" value="{% blocktrans %}create{% endblocktrans %}" /></p>
+                <p class="submit"><input type="submit" id="submit" value="{% blocktrans %}create{% endblocktrans %}" /></p>
             </form>
         </div>
     </div>

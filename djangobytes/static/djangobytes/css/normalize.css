@@ -296,7 +296,6 @@ button,
 input,
 select,
 textarea {
-	-webkit-appearance: none;
 	border-radius: 0;
 	vertical-align: baseline;
 	*vertical-align: middle;
