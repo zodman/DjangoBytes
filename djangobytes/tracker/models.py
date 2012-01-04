@@ -48,3 +48,17 @@ class Torrent(models.Model):
 
     def __unicode__(self):
         return self.infohash
+
+class Peer(models.Model):
+    torrent = models.ForeignKey(Torrent, verbose_name=_('Torrent'))
+    peer_id = models.CharField(_('peer id'), max_length=250)
+    ip = models.IPAddressField(verbose_name=_('IP Address'))
+    port = models.IntegerField(verbose_name=_('Port'))
+    downloaded = models.IntegerField(verbose_name=_('Bytes downloaded'))
+    uploaded = models.IntegerField(verbose_name=_('Bytes uploaded'))
+    left = models.IntegerField(verbose_name=_('Bytes left'))
+    seeder = models.BooleanField(verbose_name=_('is seeder'))
+
+    class Meta:
+        verbose_name = _('Peer')
+        verbose_name_plural = _('Peers')
