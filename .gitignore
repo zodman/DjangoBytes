@@ -1,3 +1,4 @@
 djangobytes/db.sqlite3
 *.pyc
 dev/
+error.log
