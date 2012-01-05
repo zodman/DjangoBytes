@@ -30,7 +30,5 @@ SOFTWARE.
 from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns('djangobytes.tracker.views',
-    #url(r'^browse/$', 'browse', name='browse'),
-    #url(r'^torrent/?P<torrentid>\d+$', 'torrent', name='torrent'),
-    #url(r'^announce/$', 'announce', name='announce'),
+    url(r'^announce/$', 'announce', name='announce'),
 )

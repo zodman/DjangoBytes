@@ -27,9 +27,6 @@ SOFTWARE.
 
 """
 
-# System imports
-from urlparse import parse_qs
-
 # Django imports
 from django.conf import settings
 from django.http import HttpResponse
@@ -37,19 +34,21 @@ from django.utils.datastructures import MultiValueDictKeyError
 
 # DjangoBytes imports
 from djangobytes.src.inc.bencoding import encode, decode
+from djangobytes.src.inc.utilities import manual_GET
 from djangobytes.tracker.models import Torrent, Peer
 
 def announce(request):
     # Parse a query string given as a string argument.
-    qs = dict(parse_qs(request.META['QUERY_STRING']))
-
-    # Create dict to collect the response parts.
+    qs = manual_GET(request)
+    
     response_dict = {}
     
     # Check if there is an info_hash
     if qs.get('info_hash') is None:
-        response_dict['failure reason'] = 'nothing...'
-        return HttpResponse(response_dict)
+        response_dict['failure reason'] = 'no request'
+        return HttpResponse(encode(response_dict))
+
+    # Create dict to collect the response parts.
 
     # encode info_hash
     info_hash = qs['info_hash'].encode('hex')
@@ -103,8 +102,8 @@ def announce(request):
     peers[:numwant]
     for peer in peers:
         exist_peers.append({'id': peer.peer_id, 'ip': peer.ip, 'port': peer.port})
-    response_dict['interval'] = settings.ANNOUNCE_INTERVAL
     response_dict['peers'] = exist_peers
+    response_dict['interval'] = settings.ANNOUNCE_INTERVAL
 
     # Return bencoded response.
     return HttpResponse(encode(response_dict), mimetype='text/plain')
