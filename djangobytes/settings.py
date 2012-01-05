@@ -195,6 +195,7 @@ LOGIN_REQUIRED_URLS = (
 LOGIN_REQUIRED_URLS_EXCEPTIONS = (
     r'/board/login(.*)$', 
     r'/board/logout(.*)$',
+    r'/announce(.*)$',
     r'/static/djangobytes/css/login.css(.*)$',
     r'/static/djangobytes/css/normalize.css(.*)$',
 )
@@ -214,7 +215,7 @@ INS_PERMISSIONS_URL = '/'
 
 PASSKEY_LENGTH = 32
 
-# REQUIRE_ANNOUNCE_METHON can be 'standard', 'no_peer_id, or 'compact'
+# REQUIRE_ANNOUNCE_METHON can be 'standard', 'no_peer_id, or 'compact' (not implemented)
 REQUIRE_ANNOUNCE_METHOD = 'standard'
 
 # standard num_want, if client doesn't specify it itself
@@ -222,4 +223,6 @@ NUM_WANT = 50
 
 # announce interval, in seconds
 ANNOUNCE_INTERVAL = 120
+ANNOUNCE_INTERVAL_NOTFOUND = 300
+ANNOUNCE_INTERVAL_INVALIDREQUEST = 600
 
