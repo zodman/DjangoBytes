@@ -58,8 +58,8 @@ def announce(request):
         torrent = Torrent.objects.get(info_hash=info_hash)
     except Torrent.DoesNotExist:
         # Torrent does not exist, so return failure reason.
-        responce_dict['failure reason'] = 'torrent not found'
-        responce_dict['interval'] = settings.ANNOUNCE_INTERVAL_NOTFOUND
+        response_dict['failure reason'] = 'torrent not found'
+        response_dict['interval'] = settings.ANNOUNCE_INTERVAL_NOTFOUND
         # Return bencoded response.
         return HttpResponse(encode(response_dict))
 
