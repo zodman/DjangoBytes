@@ -3,19 +3,16 @@ from string import digits
 from itertools import takewhile 
 
 def manual_GET(request):
-    if ' ' in request.META['SERVER_PROTOCOL']:
-        query_string = ' '.join(
-            [request.META['QUERY_STRING']] +
-            request.META['SERVER_PROTOCOL'].split(' ')[:-1]
-        )  
-        args = query_string.split('&')
-        result = {}
-        for arg in args:
-            key, value = arg.split('=', 1)
-            result[key] = value
-        return result
-    else:
-        return request.GET
+    query_string = ' '.join(
+        [request.META['QUERY_STRING']]
+    )  
+    args = query_string.split('&')
+    result = {}
+    for arg in args:
+        key, value = arg.split('=', 1)
+        print(key+' : '+value)
+        result[key] = value
+    return result
 
 class Iterator:
     

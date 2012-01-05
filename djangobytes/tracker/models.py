@@ -55,9 +55,9 @@ class Peer(models.Model):
     peer_id = models.CharField(_('peer id'), max_length=250)
     ip = models.IPAddressField(verbose_name=_('IP Address'))
     port = models.IntegerField(verbose_name=_('Port'))
-    downloaded = models.IntegerField(verbose_name=_('Bytes downloaded'))
-    uploaded = models.IntegerField(verbose_name=_('Bytes uploaded'))
-    left = models.IntegerField(verbose_name=_('Bytes left'))
+    downloaded = models.IntegerField(verbose_name=_('Bytes downloaded'), null=True)
+    uploaded = models.IntegerField(verbose_name=_('Bytes uploaded'), null=True)
+    left = models.IntegerField(verbose_name=_('Bytes left'), null=True)
     seeder = models.BooleanField(verbose_name=_('is seeder'))
     is_active = models.BooleanField(verbose_name=_('is active'))
 
