@@ -18,7 +18,12 @@ html, body {
     width: 960px;
     padding-top: 10px;
     margin: auto;
+    font-size: 12px;
 }
+
+/**
+ * Typography
+ */
 
 
 /**

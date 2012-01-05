@@ -36,7 +36,7 @@ from django.conf import settings
 
 #DjangoBytes imports
 from djangobytes.board.forms import *
-from djangobytes.board.shortcuts import *
+from djangobytes.src.inc.shortcuts import *
 
 def config_settings(request):
     return render_to_response('board/config/settings.html', context_instance=RequestContext(request))

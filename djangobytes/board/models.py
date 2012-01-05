@@ -64,6 +64,8 @@ class UserProfile(models.Model):
     passkey = models.CharField(_('Passkey'), max_length=32, blank=True, null=True)
     avatar = models.ForeignKey(File, verbose_name=_('Avatar'), blank=True, null=True)
     userclass = models.ForeignKey(UserClass, verbose_name=_('Userclass'), blank=True, null=True)
+    email = models.EmailField(_('E-Mail address'), unique=True, null=False, blank=False)
+    jid = models.EmailField(_('Jabber-ID'), unique=True, null=False, blank=False)
 
     class Meta:
         verbose_name = _('User Profile')
