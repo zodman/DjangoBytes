@@ -88,7 +88,7 @@ def announce(request):
         port = request.GET['port']
         event = request.GET.get('event', '')
         peer_id = request.GET.get('peer_id')
-        ip = request.META['HTTP_X_REAL_IP']
+        ip = request.META.get('REMOTE_ADDR')
     except MultiValueDictKeyError:
         # The request is invalid, so return failure reason.
         failureResponse()
