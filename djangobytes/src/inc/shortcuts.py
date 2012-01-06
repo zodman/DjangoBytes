@@ -41,8 +41,17 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.utils.encoding import smart_str
 
-"""Keep your usefull tools here
-"""
+def manual_GET(request):
+    query_string = ' '.join(
+        [request.META['QUERY_STRING']]
+    )  
+    args = query_string.split('&')
+    result = {}
+    for arg in args:
+        key, value = arg.split('=', 1)
+        print(key+' : '+value)
+        result[key] = value
+    return result
 
 def csrf_render(request, tpl, tplvars={}, forms_errors=None):
     """Shortcut for renewing csrf cookie and passing request context

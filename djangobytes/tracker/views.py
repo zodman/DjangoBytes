@@ -39,13 +39,13 @@ from django.utils.datastructures import MultiValueDictKeyError
 
 # DjangoBytes imports
 from djangobytes.src.inc.benc import bdecode, bencode
-from djangobytes.src.inc.utilities import manual_GET
+from djangobytes.src.inc.shortcuts import manual_GET
 from djangobytes.tracker.models import Torrent, Peer
 
 def failureResponse(failure_reason=None, failure_code=None, interval=None):
     response = {}
     if not failure_reason:
-        failure = 'Invalid Request'
+        failure_reason = 'Invalid Request'
     if not interval:
         interval = settings.ANNOUNCE_INTERVAL_INVALIDREQUEST
     response['failure reason'] = failure_reason
@@ -80,7 +80,7 @@ def announce(request):
         torrent = Torrent.objects.get(info_hash=info_hash)
     except Torrent.DoesNotExist:
         # Torrent does not exist, so return failure reason.
-        failureResponse(failure_reason='Torrent not found', failure_code=200, interval=ANNOUNCE_INTERVAL_NOTFOUND)
+        failureResponse(failure_reason='Torrent not found', failure_code=200, interval=settings.ANNOUNCE_INTERVAL_NOTFOUND)
 
     # Check Request
     try:
