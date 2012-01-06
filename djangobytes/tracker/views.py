@@ -91,6 +91,9 @@ def announce(request):
         event = request.GET.get('event', '')
         peer_id = request.GET.get('peer_id')
         ip = request.META.get('REMOTE_ADDR')
+        # nginx workaround
+        if ip == '127.0.0.1':
+            ip = request.META.get('HTTP_X_REAL_IP')
     except MultiValueDictKeyError:
         # The request is invalid, so return failure reason.
         return(failureResponse())
