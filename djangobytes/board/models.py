@@ -86,3 +86,24 @@ class Invite(models.Model):
     def __unicode__(self):
         return "{0} - {1}".format(user, is_active)
 
+class BitTorrentClient(models.Model):
+    full_name = models.CharField(_('Full name'), max_length=40)
+    short_name = models.CharField(_('Short name'), max_length=2)
+
+    class Meta:
+        verbose_name = _('BitTorrent client')
+        verbose_name_plural = _('BitTorrent clients')
+
+    def __unicode__(self):
+        return full_name
+
+class BitTorrentClientWhitelist(models.Model):
+    client = models.ForeignKey(BitTorrentClient, verbose_name=_('Client'))
+    version = models.IntegerField(verbose_name=_('Version'), null=False, blank=False)
+
+    class Meta:
+        verbose_name = _('BitTorrent client whitelist')
+        verbose_name_plural = _('BitTorrent clients whitelist')
+
+    def __unicode__(self):
+        return "{0} {1}".format(client, version)

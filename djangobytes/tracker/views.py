@@ -59,14 +59,14 @@ def announce(request):
     try:
         qs = manual_GET(request)
     except:
-        return(failureResponse(failure_code=101))
+        return(failureResponse(failure_reason='Invalid request type: client request was not a HTTP GET.', failure_code=100))
 
     # Create dict to collect the response parts.
     response_dict = {}
     
     # Check if there is an info_hash
     if qs.get('info_hash') is None:
-        return(failureResponse(failure_code=101))
+        return(failureResponse(failure_reason='Missing info_hash.', failure_code=101))
 
     # get info_hash
     info_hash = qs.get('info_hash')
