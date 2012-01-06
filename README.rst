@@ -74,6 +74,14 @@ It's simple and easy::
 
 DjangoBytes is now running on http://127.0.0.1:22446/.
 
+Production Deployments
+======================
+
+The following BitTorrent-Trackers are powered by DjangoBytes:
+
+.. image::
+   https://github.com/kanadezwo/DjangoBytes/raw/master/res/serverkiller-logo.png
+
 Contact
 =======
 
@@ -86,3 +94,4 @@ Thanks
 ======
 
 Thanks to Bernhard Posselt, who has helped us to fix various problems.
+
