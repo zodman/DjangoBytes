@@ -167,7 +167,7 @@ html, body {
         visibility: hidden;
     }
 
-    #loginform_inner #id_username {
+    #loginform_inner input {
         border: none;
         color: #BEBEBE;
         display: block;
@@ -176,29 +176,11 @@ html, body {
         background-color: #242424;
     }
 
-    #loginform_inner #id_username:focus {
+    #loginform_inner input:focus {
         background-color: #342424;
         outline: none;
     }
     
-    #loginform_inner #id_username:hover {
-        outline: none;
-    }
-
-    #loginform_inner #id_password {
-        border: none;
-        color: #BEBEBE;
-        display: block;
-        float: right;
-        width: 90%;
-        background-color: #242424;
-    }
-
-    #loginform_inner #id_password:focus {
-        background-color: #342424;
-        outline: none;
-    }
-    
-    #loginform_inner #id_password:hover {
+    #loginform_inner input:hover {
         outline: none;
     }
