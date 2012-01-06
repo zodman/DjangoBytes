@@ -31,7 +31,6 @@ SOFTWARE.
 import urllib
 from struct import pack
 from socket import inet_aton
-#from bencode import bencode as bencode
 
 # Django imports
 from django.conf import settings
@@ -39,8 +38,6 @@ from django.http import HttpResponse
 from django.utils.datastructures import MultiValueDictKeyError
 
 # DjangoBytes imports
-#from djangobytes.src.inc.bencoding import encode as bencode
-#from djangobytes.src.inc.bencoding import decode as bdecode
 from djangobytes.src.inc.benc import bdecode, bencode
 from djangobytes.src.inc.utilities import manual_GET
 from djangobytes.tracker.models import Torrent, Peer
