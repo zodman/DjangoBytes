@@ -44,10 +44,12 @@ class UserForm(forms.ModelForm):
     password2 = forms.CharField(label=_('Confirm password'), required=True, widget=forms.PasswordInput)
     is_staff = forms.BooleanField(label=_('Staff'),
         help_text=_('Sets if the user is a staff.'), required=False)
+    is_superuser = forms.BooleanField(label=_('Superuser'),
+        help_text=_('Sets if the user is a superuser.'), required=False)
     
     class Meta:
         model = User
-        exclude = ('first_name', 'last_name', 'is_superuser', 'email', 'last_login',
+        exclude = ('first_name', 'last_name', 'email', 'last_login',
                    'date_joined', 'groups', 'user_permissions', 'password')
 
     def clean_password2(self):

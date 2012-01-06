@@ -37,6 +37,7 @@ urlpatterns = patterns('djangobytes.board.views.board',
 )
 
 urlpatterns += patterns('djangobytes.board.views.config',
+    url(r'^config/setup/$', 'config_setup', name='config_setup'),
     url(r'^config/settings/$', 'config_settings', name='config_settings'),
     url(r'^config/settings/new_user/$', 'config_settings_new_user', name='config_settings_new_user'),
 )

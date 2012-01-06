@@ -33,6 +33,7 @@ from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404, render, render_to_response, RequestContext
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from django.contrib.auth.models import User
 
 #DjangoBytes imports
 from djangobytes.board.forms import *
@@ -69,3 +70,34 @@ def config_settings_new_user(request):
         }
         return csrf_render(request, 'board/config/settings_new_user.html', ctx)
 
+def config_setup(request):
+    """
+    Setup view
+    """
+    su_exists = len(User.objects.filter(is_superuser=True))
+    if not su_exists:
+        if request.method == 'POST':
+            user_form = UserForm(request.POST)
+            profile_form = UserProfileForm(request.POST)
+            if user_form.is_valid() and profile_form.is_valid():
+                user = user_form.save()
+                profile = profile_form.save(commit=False)
+                profile.user = user
+                profile.passkey = passkey_generator()
+                profile.save()
+                return HttpResponseRedirect(reverse('board:login'))
+            ctx = {
+                'user_form': user_form,
+                'profile_form': profile_form
+            }
+            return csrf_render(request, 'board/config/setup.html', ctx)
+        else:
+            user_form = UserForm()
+            profile_form = UserProfileForm()
+            ctx = {
+                'user_form': user_form,
+                'profile_form': profile_form
+            }
+            return csrf_render(request, 'board/config/setup.html', ctx)
+    else:
+        raise Http404

@@ -196,6 +196,7 @@ LOGIN_REQUIRED_URLS_EXCEPTIONS = (
     r'/board/login(.*)$', 
     r'/board/logout(.*)$',
     r'/tracker/announce(.*)$',
+    r'/board/config/setup/(.*)$',
     r'/static/djangobytes/css/login.css(.*)$',
     r'/static/djangobytes/css/normalize.css(.*)$',
 )
@@ -209,6 +210,7 @@ STAFF_REQUIRED_URLS = {
 }
 
 STAFF_REQUIRED_URLS_EXCEPTIONS = (
+    r'/board/config/setup(.*)$',
 )
 
 INS_PERMISSIONS_URL = '/'
