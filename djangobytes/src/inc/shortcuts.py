@@ -30,6 +30,7 @@ SOFTWARE.
 # System imports
 import os
 import mimetypes
+import string, random
 
 # Django imports
 from django.shortcuts import render_to_response
@@ -40,6 +41,10 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.utils.encoding import smart_str
+
+
+def passkey_generator(size=40, chars=string.ascii_lowercase + string.digits):
+    return ''.join(random.choice(chars) for x in range(size))
 
 def manual_GET(request):
     query_string = ' '.join(

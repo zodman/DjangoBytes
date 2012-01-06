@@ -56,14 +56,17 @@ def failureResponse(failure_reason=None, failure_code=None, interval=None):
 
 def announce(request):
     # Parse a query string given as a string argument.
-    qs = manual_GET(request)
-    
+    try:
+        qs = manual_GET(request)
+    except:
+        return(failureResponse(failure_code=101))
+
     # Create dict to collect the response parts.
     response_dict = {}
     
     # Check if there is an info_hash
     if qs.get('info_hash') is None:
-        failureResponse(failure_code=101)
+        return(failureResponse(failure_code=101))
 
     # get info_hash
     info_hash = qs.get('info_hash')
@@ -73,14 +76,14 @@ def announce(request):
         info_hash = urllib.unquote_plus(info_hash)
         info_hash = info_hash.encode('hex')
     except: # TODO: search correct exception
-        failureResponse(failure_reason='Invalid info_hash')       
+        return(failureResponse(failure_reason='Invalid info_hash'))
 
     # Check if there is a Torrent with this info_hash.
     try:
         torrent = Torrent.objects.get(info_hash=info_hash)
     except Torrent.DoesNotExist:
         # Torrent does not exist, so return failure reason.
-        failureResponse(failure_reason='Torrent not found', failure_code=200, interval=settings.ANNOUNCE_INTERVAL_NOTFOUND)
+        return(failureResponse(failure_reason='Torrent not found', failure_code=200, interval=settings.ANNOUNCE_INTERVAL_NOTFOUND))
 
     # Check Request
     try:
@@ -90,7 +93,7 @@ def announce(request):
         ip = request.META.get('REMOTE_ADDR')
     except MultiValueDictKeyError:
         # The request is invalid, so return failure reason.
-        failureResponse()
+        return(failureResponse())
 
     announce_method_options = ['compact', 'no_peer_id']
     announce_method_results = {}

@@ -52,7 +52,7 @@ def config_settings_new_user(request):
             user = user_form.save()
             profile = profile_form.save(commit=False)
             profile.user = user
-            profile.passkey = 'testkey'
+            profile.passkey = passkey_generator()
             profile.save()
             return HttpResponseRedirect(reverse('board:config_settings'))
         ctx = {
