@@ -29,6 +29,8 @@ SOFTWARE.
 
 # System imports
 import urllib
+from struct import pack
+from socket import inet_aton
 #from bencode import bencode as bencode
 
 # Django imports
@@ -93,6 +95,26 @@ def announce(request):
         # The request is invalid, so return failure reason.
         failureResponse()
 
+    announce_method_options = ['compact', 'no_peer_id']
+    announce_method_results = {}
+    for key in announce_method_options:
+        if not request.GET.get(key):
+            announce_method_results[key] = False
+        else:
+            announce_method_results[key] = request.GET.get(key)
+            try:
+                announce_method_results[key] = int(announce_method_results[key])
+            except ValueError:
+                # if string is not convertable to integer, set the given method to false
+                announce_method_results[key] = False
+            if announce_method_results[key] == 1:
+                announce_method_results[key] = True
+            else:
+                # if given method is a integer and if it's not 1, the given method is invalid!
+                # to prevent of sending a failure response, set the given method to false
+                # this means, that the tracker sends a standard response to the client
+                announce_method_results[key] = False
+
     # Process eventstate
     if 'started' in event:
         peer, created = Peer.objects.get_or_create(peer_id=peer_id, port=port, ip=ip, torrent=torrent)
@@ -118,9 +140,24 @@ def announce(request):
     exist_peers = []
     peers = Peer.objects.filter(torrent=torrent)
     peers[:numwant]
-    for peer in peers:
-        print('peerinfo: id='+peer.peer_id+' [ip:port]='+peer.ip+':'+str(peer.port))
-        exist_peers.append({'peer id': peer.peer_id, 'ip': peer.ip, 'port': peer.port})
+
+    if announce_method_results['compact'] == True:
+        print('DEBUG:   compact response')
+        exist_peers = ""
+        for peer in peers:
+            exist_peers += pack('>4sH', inet_aton(peer.ip), peer.port)
+
+    elif announce_method_results['no_peer_id'] == True:
+        print('DEBUG:   no_peer_id response')
+        exist_peers = []
+        for peer in peers:
+            exist_peers.append({'ip': peer.ip, 'port': peer.port})
+    else:
+        print('DEBUG:   standard response')
+        exist_peers = []
+        for peer in peers:
+            exist_peers.append({'peer id': peer.peer_id, 'ip': peer.ip, 'port': peer.port})
+    
     response_dict['peers'] = exist_peers
     response_dict['interval'] = settings.ANNOUNCE_INTERVAL
 
