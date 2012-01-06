@@ -43,6 +43,18 @@ from djangobytes.src.inc.benc import bdecode, bencode
 from djangobytes.src.inc.utilities import manual_GET
 from djangobytes.tracker.models import Torrent, Peer
 
+def failureResponse(failure_reason=None, failure_code=None, interval=None):
+    response = {}
+    if not failure_reason:
+        failure = 'Invalid Request'
+    if not interval:
+        interval = settings.ANNOUNCE_INTERVAL_INVALIDREQUEST
+    response['failure reason'] = failure_reason
+    if failure_code:
+        response['failure code'] = failure_code
+    response['interval'] = interval
+    return HttpResponse(bencode(response))
+
 def announce(request):
     # Parse a query string given as a string argument.
     qs = manual_GET(request)
@@ -52,8 +64,7 @@ def announce(request):
     
     # Check if there is an info_hash
     if qs.get('info_hash') is None:
-        response_dict['failure reason'] = 'no request'
-        return HttpResponse(bencode(response_dict))
+        failureResponse(failure_code=101)
 
     # get info_hash
     info_hash = qs.get('info_hash')
@@ -63,18 +74,14 @@ def announce(request):
         info_hash = urllib.unquote_plus(info_hash)
         info_hash = info_hash.encode('hex')
     except: # TODO: search correct exception
-        response_dict['failure reason'] = 'invalid info_hash'
-        return HttpResponse(bencode(response_dict))
+        failureResponse(failure_reason='Invalid info_hash')       
 
     # Check if there is a Torrent with this info_hash.
     try:
         torrent = Torrent.objects.get(info_hash=info_hash)
     except Torrent.DoesNotExist:
         # Torrent does not exist, so return failure reason.
-        response_dict['failure reason'] = 'torrent not found'
-        response_dict['interval'] = settings.ANNOUNCE_INTERVAL_NOTFOUND
-        # Return bencoded response.
-        return HttpResponse(bencode(response_dict))
+        failureResponse(failure_reason='Torrent not found', failure_code=200, interval=ANNOUNCE_INTERVAL_NOTFOUND)
 
     # Check Request
     try:
@@ -84,10 +91,7 @@ def announce(request):
         ip = request.META['HTTP_X_REAL_IP']
     except MultiValueDictKeyError:
         # The request is invalid, so return failure reason.
-        response_dict['failure reason'] = 'invalid request'
-        response_dict['interval'] = settings.ANNOUNCE_INTERVAL_INVALIDREQUEST
-        # Return bencoded response.
-        return HttpResponse(bencode(response_dict))
+        failureResponse()
 
     # Process eventstate
     if 'started' in event:
