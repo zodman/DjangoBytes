@@ -74,6 +74,11 @@ It's simple and easy::
 
 DjangoBytes is now running on http://127.0.0.1:22446/.
 
+Initial setup
+=============
+
+You can start with the initial setup at http://ip:port/board/config/setup.
+
 Production Deployments
 ======================
 
