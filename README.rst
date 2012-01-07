@@ -64,7 +64,7 @@ Install all dependencies::
     pip install bjoern django pil pysqlite
 
 Run DjangoBytes
-===============
+---------------
 
 It's simple and easy::
 
@@ -75,7 +75,7 @@ It's simple and easy::
 DjangoBytes is now running on http://127.0.0.1:22446/.
 
 Nginx (SSL)
-===========
+-----------
 
 It's also simple and easy::
 
@@ -116,7 +116,7 @@ It's also simple and easy::
 
 
 Initial setup
-=============
+-------------
 
 You can start with the initial setup at https://ip:port/board/config/setup.
 
