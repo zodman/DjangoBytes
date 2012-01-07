@@ -199,6 +199,7 @@ LOGIN_REQUIRED_URLS_EXCEPTIONS = (
     r'/board/config/setup/(.*)$',
     r'/static/djangobytes/css/login.css(.*)$',
     r'/static/djangobytes/css/normalize.css(.*)$',
+    r'/static/djangobytes/img/serverkiller-logo.png(.*)$',
 )
 
 LOGIN_URL = '/board/login/'
