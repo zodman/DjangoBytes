@@ -34,6 +34,9 @@ import sys
 # Install directory
 INSTALL_DIR = os.path.dirname( os.path.abspath(__file__) )
 
+# SSL stuff
+SESSION_COOKIE_SECURE = True
+
 # Django configuration
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
