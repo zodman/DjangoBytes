@@ -10,26 +10,25 @@
     <link rel="shortcut icon" href="{{ STATIC_URL }}serverkiller/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/normalize.css" />
     {% if user.is_authenticated %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> 
+    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-modal.js"></script> 
+    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-alerts.js"></script> 
+    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-twipsy.js"></script> 
+    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-popover.js"></script> 
+    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-dropdown.js"></script> 
+    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-scrollspy.js"></script> 
+    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-tabs.js"></script> 
+    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-buttons.js"></script> 
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/bootstrap.css" />
     {% block css %}{% endblock %}
     {% else %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/login.css" />
     {% endif %}
-    <script src="{{ STATIC_URL }}djangobytes/js/libs/modernizr-2.0.6.min.js"></script>
 </head>
 
 <body class="{% block body_class %}{% endblock %}">
 {% block body %}
     {% block content %}{% endblock %}
-    {% block javascript_library %}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}djangobytes/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
-    <script defer src="{{ STATIC_URL }}djangobytes/js/plugins.js"></script>
-    <script defer src="{{ STATIC_URL }}djangobytes/js/script.js"></script>
-
-    {% endblock %}
-    {% block javascript %}{% endblock %}
-
 {% endblock %}
 </body>
 </html>
