@@ -16,17 +16,17 @@
             </div>
             {% endif %}
             <table>
-            <form method="post" class="section" action="{% url board:config_settings_new_user %}">
-                {% csrf_token %}
+                <form method="post" class="section" action="{% url board:config_settings_new_user %}">
+                    {% csrf_token %}
                     {% for field in user_form %}
                         <tr>
                         <div class="clearfix">
-                            <td width="50%" style="text-align:right;"><p>{{ field.label }}</p>
+                            <td width="50%" class="table_noborder" style="text-align:right;"><p>{{ field.label }}</p>
                             {% if field.help_text %}
                                 <span class="help-inline">{{ field.help_text }}</span>
                             {% endif %}
                             </td>
-                            <td><div class="input{% if field.errors %} error{% endif %}">
+                            <td class="table_noborder"><div class="input{% if field.errors %} error{% endif %}">
                                 {{ field }}
                             </div></td>
                         </div>
@@ -35,12 +35,12 @@
                     {% for field in profile_form %}
                         <tr>
                         <div class="clearfix">
-                            <td width="50%" style="text-align:right;"><p>{{ field.label }}</p>
+                            <td width="50%" class="table_noborder" style="text-align:right;"><p>{{ field.label }}</p>
                             {% if field.help_text %}
                                 <span class="help-inline">{{ field.help_text }}</span>
                             {% endif %}
                             </td>
-                            <td><div class="input{% if field.errors %} error{% endif %}">
+                            <td class="table_noborder"><div class="input{% if field.errors %} error{% endif %}">
                                 {{ field }}
                             </div></td>
                         </div>
