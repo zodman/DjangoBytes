@@ -1,8 +1,9 @@
-
 html, body {
     height: 100%;
     overflow-y: hidden;
     font-family: Helvetica;
+    margin: 0;
+    padding: 0;
 }
 
 #setupform_outer {
