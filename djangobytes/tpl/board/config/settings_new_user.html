@@ -6,46 +6,50 @@
 {% block content %}
     {% include "includes/nav.html" with board=1 %}
 
-    <div id="main">
-        <div id="form1">
+    <div class="container">
+        <div class="content">
             <h1>{% trans 'Create a new user' %}</h1>
             {% if forms_errors %}
-            <div class="error">
-                <b>{% blocktrans %}Error{% endblocktrans %}</b>
-                <p>{% blocktrans %}Can't create new user. Check the highlighted fields.{% endblocktrans %}</p>
+            <div class="alert-message error">
+                <a class="close" href="#">×</a>
+                <p>{% blocktrans %}<strong>Can't create new user.</strong> Check the highlighted fields.{% endblocktrans %}</p>
             </div>
             {% endif %}
+            <table>
             <form method="post" class="section" action="{% url board:config_settings_new_user %}">
                 {% csrf_token %}
-                <table>
                     {% for field in user_form %}
                         <tr>
-                            <th>{{ field.label }}
+                        <div class="clearfix">
+                            <td width="50%" style="text-align:right;"><p>{{ field.label }}</p>
                             {% if field.help_text %}
-                                <br /><span class="helptext">{{ field.help_text }}</span></th>
+                                <span class="help-inline">{{ field.help_text }}</span>
                             {% endif %}
-                            <td>
-                                <div class="field{% if field.errors %} field_error{% endif %}">
-                                  {{ field }}
-                                </div>
                             </td>
+                            <td><div class="input{% if field.errors %} error{% endif %}">
+                                {{ field }}
+                            </div></td>
+                        </div>
                         </tr>
                     {% endfor %}
                     {% for field in profile_form %}
                         <tr>
-                            <th>{{ field.label }}
+                        <div class="clearfix">
+                            <td width="50%" style="text-align:right;"><p>{{ field.label }}</p>
                             {% if field.help_text %}
-                                <br /><span class="helptext">{{ field.help_text }}</span></th>
+                                <span class="help-inline">{{ field.help_text }}</span>
                             {% endif %}
-                            <td>
-                                <div class="field{% if field.errors %} field_error{% endif %}">
-                                  {{ field }}
-                                </div>
                             </td>
+                            <td><div class="input{% if field.errors %} error{% endif %}">
+                                {{ field }}
+                            </div></td>
+                        </div>
                         </tr>
                     {% endfor %}
                 </table>
-                <p class="submit"><input type="submit" id="submit" value="{% blocktrans %}create{% endblocktrans %}" /></p>
+                <div class="actions">
+                    <input type="submit" class="btn primary" value="{% blocktrans %}create{% endblocktrans %}" />
+                </div>
             </form>
         </div>
     </div>

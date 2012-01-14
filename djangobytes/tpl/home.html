@@ -4,7 +4,9 @@
 
 {% block content %}
     {% include "includes/nav.html" with board=1 %}
-    <div id="main">
-        {% trans "Hurrah! ^.^" %}
+    <div class="container">
+        <div class="content">
+                <p>{% trans 'Hi' %} {{user.username}}</p>
+        </div>
     </div>
 {% endblock %}

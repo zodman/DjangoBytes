@@ -1,22 +1,22 @@
 {% load i18n %}
 {% if user.is_authenticated %}
-<div id="head">
-    <nav>
-        <ul>
-            <li><a href="/" class="main">DjangoBytes</a></li>
-            {% if board %}
-                <li><a href="#" >{% blocktrans %}Torrents{% endblocktrans %}</a></li>
-                <li><a href="#" >{% blocktrans %}Forums{% endblocktrans %}</a></li>
-                <li><a href="#" >{% blocktrans %}Members{% endblocktrans %}</a></li>
-                <li><a href="#" >{% blocktrans %}Wiki{% endblocktrans %}</a></li>
-                {% if user.is_staff %}
-                <li><a href="{% url board:config_settings %}" >{% blocktrans %}Settings{% endblocktrans %}</a></li>
+<div class="topbar" data-scrollspy="scrollspy" >
+    <div class="topbar-inner">
+        <div class="container">
+            <a class="brand" href="/">{% blocktrans %}DjangoBytes{% endblocktrans %}</a>
+            <ul>
+                {% if board %}
+                    <li><a href="#" >{% blocktrans %}Torrents{% endblocktrans %}</a></li>
+                    <li><a href="#" >{% blocktrans %}Forums{% endblocktrans %}</a></li>
+                    <li><a href="#" >{% blocktrans %}Members{% endblocktrans %}</a></li>
+                    <li><a href="#" >{% blocktrans %}Wiki{% endblocktrans %}</a></li>
+                    {% if user.is_staff %}
+                    <li><a href="{% url board:config_settings %}" >{% blocktrans %}Settings{% endblocktrans %}</a></li>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-        </ul>
-        <ul id="login">
-              <li><a href="{% url board:logout %}">{% blocktrans %}Logout{% endblocktrans %}</a></li>
-        </ul>
-    </nav>
+            </ul>
+            <p class="pull-right"><a href="{% url board:logout %}">{% blocktrans %}Logout{% endblocktrans %}</a></p>
+        </div>
+    </div>
 </div>
 {% endif %}

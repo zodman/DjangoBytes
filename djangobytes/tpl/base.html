@@ -8,7 +8,6 @@
     <meta name="author" content="{% block meta_author %}{% endblock %}" />
     
     <link rel="shortcut icon" href="{{ STATIC_URL }}serverkiller/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/normalize.css" />
     {% if user.is_authenticated %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> 
     <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-modal.js"></script> 
@@ -20,15 +19,15 @@
     <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-tabs.js"></script> 
     <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-buttons.js"></script> 
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/djangobytes.css" />
     {% block css %}{% endblock %}
     {% else %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/login.css" />
     {% endif %}
 </head>
 
-<body class="{% block body_class %}{% endblock %}">
-{% block body %}
-    {% block content %}{% endblock %}
-{% endblock %}
+<body>
+{% block content %}{% endblock %}
 </body>
 </html>
