@@ -48,7 +48,7 @@ class Torrent(models.Model):
         verbose_name_plural = _('Torrents')
 
     def __unicode__(self):
-        return self.infohash
+        return self.info_hash
 
 class Peer(models.Model):
     torrent = models.ForeignKey(Torrent, verbose_name=_('Torrent'))
