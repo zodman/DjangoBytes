@@ -30,5 +30,5 @@ SOFTWARE.
 from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns('djangobytes.tracker.views',
-    url(r'^announce/$', 'announce', name='announce'),
+    url(r'^announce$', 'announce', name='announce'),
 )
