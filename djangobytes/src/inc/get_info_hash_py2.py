@@ -6,6 +6,7 @@ import hashlib
 
 # args:         torrentfile (str)... path to the torrent file
 # return:       the info hash of the specified torrent file
+#               if operation fails, the return type is None
 def get_info_hash(torrentfile):
     f = open(torrentfile, 'rb')
     try:
