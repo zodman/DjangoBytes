@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
 # imports
-#from py3bencode import bdecode, bencode, DecodingException
 from benc import bdecode, bencode
 import hashlib
-import pprint
 
+# args:         torrentfile (str)... path to the torrent file
+# return:       the info hash of the specified torrent file
 def get_info_hash(torrentfile):
     f = open(torrentfile, 'rb')
     try:
@@ -13,14 +13,17 @@ def get_info_hash(torrentfile):
     except ValueError:
         print('ERR: Invalid File')
         return
+    # encode the value of the info key of the dictionary with the metainfo 
+    # in sha1; encode the sha1 hash into hex.
     info_hash = hashlib.sha1(bencode(bencoded_data['info'])).hexdigest()
     return info_hash
 
 
 if __name__ == '__main__':
  
-   # imports
+    # imports
     import os, sys
+    
     if len(sys.argv) == 2:
         fp = sys.argv[1]
 	
@@ -37,6 +40,3 @@ if __name__ == '__main__':
     else:
         print("Usage: %s [torrentfile]" % sys.argv[0])
         sys.exit(1)
-
-    
-
