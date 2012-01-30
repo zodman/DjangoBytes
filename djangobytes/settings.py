@@ -35,7 +35,8 @@ import sys
 INSTALL_DIR = os.path.dirname( os.path.abspath(__file__) )
 
 # SSL stuff
-SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True 
+SESSION_COOKIE_SECURE = False #<-- during develop processes....
 
 # Django configuration
 DEBUG = True
