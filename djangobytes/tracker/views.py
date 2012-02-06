@@ -31,6 +31,7 @@ SOFTWARE.
 import urllib
 from struct import pack
 from socket import inet_aton
+import random
 
 # Django imports
 from django.conf import settings
@@ -41,6 +42,9 @@ from django.utils.datastructures import MultiValueDictKeyError
 from djangobytes.src.inc.benc import bdecode, bencode
 from djangobytes.src.inc.shortcuts import manual_GET
 from djangobytes.tracker.models import Torrent, Peer
+
+def randomInterval(stdInterval=settings.ANNOUNCE_INTERVAL, rrange=240):
+    return stdInterval+random.randrange(rrange)
 
 def failureResponse(failure_reason=None, failure_code=None, interval=None):
     response = {}
@@ -162,7 +166,7 @@ def announce(request):
             exist_peers.append({'peer id': peer.peer_id, 'ip': peer.ip, 'port': peer.port})
     
     response_dict['peers'] = exist_peers
-    response_dict['interval'] = settings.ANNOUNCE_INTERVAL
+    response_dict['interval'] = randomInterval()
 
     # Return bencoded response.
     return HttpResponse(bencode(response_dict))
