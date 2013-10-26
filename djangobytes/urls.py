@@ -36,18 +36,15 @@ from django.conf import settings
 
 admin.autodiscover()
 
-urlpatterns  = patterns("",)
-if settings.DEBUG:
-    urlpatterns  += patterns("",
-         url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-                    'document_root': settings.MEDIA_ROOT,
-            }),
-        ) + staticfiles_urlpatterns()
-
-
-urlpatterns += patterns('',
+urlpatterns = patterns('',
         url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
 	url(r'^tracker/', include('djangobytes.tracker.urls', namespace='tracker', app_name='tracker')),
         url(r'^board/', include('djangobytes.board.urls', namespace='board', app_name='board')),
         url(r'^admin/', include(admin.site.urls)),
 )
+if settings.DEBUG:
+    urlpatterns  += patterns("",
+         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+                'document_root': settings.MEDIA_ROOT, "show_indexes":True, }),
+        ) + staticfiles_urlpatterns()
+

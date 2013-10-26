@@ -67,7 +67,7 @@ TIME_ZONE = 'Europe/Vienna'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'de-AT'
+LANGUAGE_CODE = 'es-MX'
 
 SITE_ID = 1
 
@@ -101,7 +101,7 @@ STATIC_URL = '/static/'
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media/')
+MEDIA_ROOT = os.path.join(INSTALL_DIR, 'media/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -160,13 +160,13 @@ INSTALLED_APPS = (
     'board',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.request",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.static",
-    'django.contrib.messages.context_processors.messages',
-)
+#TEMPLATE_CONTEXT_PROCESSORS = (
+    #"django.contrib.auth.context_processors.auth",
+    #"django.core.context_processors.request",
+    #"django.core.context_processors.i18n",
+    #"django.core.context_processors.static",
+    #'django.contrib.messages.context_processors.messages',
+#)
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
