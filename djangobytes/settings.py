@@ -142,7 +142,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(INSTALL_DIR, 'tpl'),
+    os.path.join(INSTALL_DIR, 'templates'),
     # Put strings here, like '/home/html/django_templates' or 'C:/www/django/templates'.
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
