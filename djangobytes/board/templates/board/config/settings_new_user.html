@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% blocktrans %}Administration{% endblocktrans%}{% endblock %}
+
+{% block content %}
+    {% include "includes/nav.html" with board=1 %}
+
+    <div class="container">
+        <div class="content">
+            <h1>{% trans 'Create a new user' %}</h1>
+            {% if forms_errors %}
+            <div class="alert-message error">
+                <a class="close" href="#">×</a>
+                <p>{% blocktrans %}<strong>Can't create new user.</strong> Check the highlighted fields.{% endblocktrans %}</p>
+            </div>
+            {% endif %}
+            <table>
+                <form method="post" class="section" action="{% url board:config_settings_new_user %}">
+                    {% csrf_token %}
+                    <tr class="table_fullsize">
+                        <td colspan=2 class="table_fullsize"><h2>{%trans 'Generic' %}</h2></td>
+                    </tr>
+                    {% for field in user_form %}
+                        <tr>
+                            <div class="clearfix">
+                                <td width="50%" class="table_noborder" style="text-align:right;"><p>{{ field.label }}</p>
+                                {% if field.help_text %}
+                                    <span class="help-inline">{{ field.help_text }}</span>
+                                {% endif %}
+                                </td>
+                                <td class="table_noborder"><div class="input{% if field.errors %} error{% endif %}">
+                                    {{ field }}
+                                </div></td>
+                            </div>
+                        </tr>
+                    {% endfor %}
+                    <tr class="table_fullsize">
+                        <td colspan=2 class="table_fullsize"><h2>{%trans 'Extended' %}</h2></td>
+                    </tr>
+                    {% for field in profile_form %}
+                        <tr>
+                            <div class="clearfix">
+                                <td width="50%" class="table_noborder" style="text-align:right;"><p>{{ field.label }}</p>
+                                {% if field.help_text %}
+                                    <span class="help-inline">{{ field.help_text }}</span>
+                                {% endif %}
+                                </td>
+                                <td class="table_noborder"><div class="input{% if field.errors %} error{% endif %}">
+                                    {{ field }}
+                                </div></td>
+                            </div>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <div class="actions">
+                    <input type="submit" class="btn" value="{% blocktrans %}create{% endblocktrans %}" />
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
