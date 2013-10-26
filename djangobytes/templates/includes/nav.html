@@ -11,11 +11,11 @@
                     <li><a href="#" >{% blocktrans %}Members{% endblocktrans %}</a></li>
                     <li><a href="#" >{% blocktrans %}Wiki{% endblocktrans %}</a></li>
                     {% if user.is_staff %}
-                    <li><a href="{% url board:config_settings %}" >{% blocktrans %}Settings{% endblocktrans %}</a></li>
+                    <li><a href="{% url 'board:config_settings' %}" >{% blocktrans %}Settings{% endblocktrans %}</a></li>
                     {% endif %}
                 {% endif %}
             </ul>
-            <p class="pull-right"><a href="{% url board:logout %}">{% blocktrans %}Logout{% endblocktrans %}</a></p>
+            <p class="pull-right"><a href="{% url 'board:logout' %}">{% blocktrans %}Logout{% endblocktrans %}</a></p>
         </div>
     </div>
 </div>

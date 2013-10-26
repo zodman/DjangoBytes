@@ -31,6 +31,7 @@ SOFTWARE.
 from django.conf import settings
 from django.conf.urls.defaults import *
 
+
 # Main views
 urlpatterns = patterns('djangobytes.board.views.board',
     url(r'^logout/$', 'log_me_out', name='logout'),

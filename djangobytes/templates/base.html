@@ -1,5 +1,4 @@
-<!doctype html>
-{% load i18n %}
+{% load i18n %}<!doctype html>
 <head>
     <meta charset="utf-8" />
     <title>{% block page_title %}{% trans "DjangoBytes" %}{% endblock %}</title>
@@ -7,23 +6,19 @@
     <meta name="description" content="{% block meta_description %}{% endblock %}" />
     <meta name="author" content="{% block meta_author %}{% endblock %}" />
     
-    <link rel="shortcut icon" href="{{ STATIC_URL }}serverkiller/favicon.ico" />
-    {% if user.is_authenticated %}
+    <link rel="shortcut icon" href="{{ MEDIA_URL }}serverkiller/favicon.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> 
-    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-modal.js"></script> 
-    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-alerts.js"></script> 
-    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-twipsy.js"></script> 
-    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-popover.js"></script> 
-    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-dropdown.js"></script> 
-    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-scrollspy.js"></script> 
-    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-tabs.js"></script> 
-    <script src="{{ STATIC_URL }}djangobytes/js/bootstrap/bootstrap-buttons.js"></script> 
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/djangobytes.css" />
+    <script src="{{ MEDIA_URL }}djangobytes/js/bootstrap/bootstrap-modal.js"></script> 
+    <script src="{{ MEDIA_URL }}djangobytes/js/bootstrap/bootstrap-alerts.js"></script> 
+    <script src="{{ MEDIA_URL }}djangobytes/js/bootstrap/bootstrap-twipsy.js"></script> 
+    <script src="{{ MEDIA_URL }}djangobytes/js/bootstrap/bootstrap-popover.js"></script> 
+    <script src="{{ MEDIA_URL }}djangobytes/js/bootstrap/bootstrap-dropdown.js"></script> 
+    <script src="{{ MEDIA_URL }}djangobytes/js/bootstrap/bootstrap-scrollspy.js"></script> 
+    <script src="{{ MEDIA_URL }}djangobytes/js/bootstrap/bootstrap-tabs.js"></script> 
+    <script src="{{ MEDIA_URL }}djangobytes/js/bootstrap/bootstrap-buttons.js"></script> 
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}djangobytes/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}djangobytes/css/djangobytes.css" />
     {% block css %}{% endblock %}
-    {% else %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}djangobytes/css/login.css" />
-    {% endif %}
 </head>
 
 <body>

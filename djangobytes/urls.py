@@ -31,18 +31,23 @@ SOFTWARE.
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
-
-# DjangoBytes imports
-from djangobytes import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
 
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns  = patterns("",)
+if settings.DEBUG:
+    urlpatterns  += patterns("",
+         url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+                    'document_root': settings.MEDIA_ROOT,
+            }),
+        ) + staticfiles_urlpatterns()
+
+
+urlpatterns += patterns('',
         url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
 	url(r'^tracker/', include('djangobytes.tracker.urls', namespace='tracker', app_name='tracker')),
         url(r'^board/', include('djangobytes.board.urls', namespace='board', app_name='board')),
         url(r'^admin/', include(admin.site.urls)),
-        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.STATIC_ROOT,
-        }),
 )
